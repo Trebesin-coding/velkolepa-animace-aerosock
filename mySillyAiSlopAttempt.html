@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+
+        .div1 {
+            grid-area: 1 / 1 / 3 / 2;
+        }
+        .div2 {
+            grid-area: 2 / 2 / 3 / 3;
+        }
+        .div3 {
+            grid-area: 1 / 2 / 2 / 3;
+        }
+    </style>
+    <body>
+        <div class="parent">
+            <div class="div1">
+                <label for="query" style="color: white"
+                    >Name of the place you want to search for:</label
+                >
+                <input type="text" id="query" name="query" /><br /><br />
+                <p><button id="but1" type="button">press to search</button></p>
+            </div>
+            <div class="div3">
+                <h2 id="searchResTotal"></h2>
+            </div>
+            <div class="div2">
+                <div class="response">
+                    <h3 id="a"></h3>
+                    <p id="1"></p>
+                </div>
+                <div class="response">
+                    <h3 id="b"></h3>
+                    <p id="2"></p>
+                </div>
+                <div class="response">
+                    <h3 id="c"></h3>
+                    <p id="3"></p>
+                </div>
+                <div class="response">
+                    <h3 id="d"></h3>
+                    <p id="4"></p>
+                </div>
+                <div class="response">
+                    <h3 id="e"></h3>
+                    <p id="5"></p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        import { GoogleGenAI } from "@google/genai";
+
+         but1.addEventListener("click", call);
+
+        const ai = new GoogleGenAI({}); //apparently tohle nemuzu spustit bez backendu z nodem a ten rest api request je hodne slozity z nejakym json formattingem
+
+        async function call() {
+            var searchElement = document.getElementById("query");
+            var searchVal = searchElement.value;
+          const response = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: `list 10 best ${searchVal} in prague. send the answer only with the name of the establishment and the googlemaps link to it. no other text in the response and no ranking with numbers. just the name and then the link separated by a commma. the places should be separated with a paragraph mark.`,
+          });
+          alert(response.text);
+        }
+
+        await main();
+    </script>
+</html>
