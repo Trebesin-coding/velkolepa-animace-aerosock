@@ -14,21 +14,22 @@
             }
             .napkinbox {
                 position: absolute;
-                right: 46%;
-                margin-top: 50px;
-                height: 50px;
+                left:5rem;
+                top:6rem;
+                margin-top: 6.25rem;
+                height: 6.25rem;
             }
 
             .stickman {
                 position: relative;
-                width: 120px;
-                height: 220px;
+                width: 24rem;
+                height: 44rem;
             }
 
             .head {
-                width: 60px;
-                height: 60px;
-                border: 4px solid #ffffff;
+                width: 12rem;
+                height: 12rem;
+                border: 0.8rem solid #ffffff;
                 border-radius: 50%;
                 margin: 0 auto;
                 z-index: 0;
@@ -37,20 +38,20 @@
 
             .body {
                 position: absolute;
-                top: 60px;
+                top: 12rem;
                 left: 50%;
-                width: 4px;
-                height: 80px;
+                width: 0.8rem;
+                height: 16rem;
                 background: #ffffff;
                 transform: translateX(-50%);
             }
 
             .arm {
                 position: absolute;
-                top: 80px;
+                top: 16rem;
                 left: 50%;
-                width: 50px;
-                height: 4px;
+                width: 10rem;
+                height: 0.8rem;
                 background: #ffffff;
                 transform-origin: 0 50%;
             }
@@ -65,10 +66,10 @@
 
             .leg {
                 position: absolute;
-                top: 135px;
+                top: 27rem;
                 left: 50%;
-                width: 50px;
-                height: 4px;
+                width: 10rem;
+                height: 0.8rem;
                 background: #ffffff;
                 transform-origin: 0 50%;
             }
@@ -85,8 +86,8 @@
                 position: absolute;
                 left: 25%;
                 top: 50%;
-                height: 20px;
-                width: 30px;
+                height: 4rem;
+                width: 6rem;
                 background-color: rgb(255, 255, 255);
                 clip-path: polygon(50% 90%, 0% 100%, 100% 100%);
                 z-index: 100;
@@ -97,12 +98,12 @@
                 top: 20%;
                 flex-direction: row;
                 display: flex;
-                width: 50px;
-                height: 20px;
+                width: 10rem;
+                height: 4rem;
                 justify-content: space-evenly;
             }
             .eye {
-                width: 8px;
+                width: 1.6rem;
                 aspect-ratio: 1/1;
                 border-radius: 50%;
                 background: white;
@@ -110,7 +111,7 @@
                 position: relative;
             }
             .eye::after {
-                width: 3px;
+                width: 0.6rem;
                 aspect-ratio: 1/2;
                 background: skyblue;
                 z-index: 1000;
@@ -119,12 +120,12 @@
                 border-radius: 50%;
                 top: 50%;
                 left: 50%;
-                animation: crying 4s infinite;
-                animation: crying 4s 2s infinite;
+                animation: crying 1.5s infinite;
+                
             }
             .nose {
-                height: 5px;
-                width: 2px;
+                height: 2rem;
+                width: 0.8rem;
                 position: absolute;
                 left: 50%;
                 top: 60%;
@@ -134,14 +135,45 @@
             .pupil {
                 position: absolute;
                 background: #000000;
-                height: 4px;
-                width: 3px;
+                height: 1.6rem;
+                width: 1.2rem;
                 border-radius: 50%;
                 top: 50%;
                 left: 40%;
             }
             .rarmmove {
-                animation: movearm 3s;
+                animation: movearm 4s linear;
+                animation-direction: alternate;
+                
+            }
+            #button{
+                height:4rem;
+                width: 12rem;
+            }
+            .speechbubble{
+             filter:invert(1);
+             height:10rem;   
+             left:18rem;
+             transform: scaleX(1.5);
+             position: absolute;
+            }
+            .bubbletext{
+                height:10rem;
+                top:1.5rem;
+                left: 19rem;
+                position: absolute;
+                color:white;
+                font-size: 1.2rem;
+            }
+            .napkin{
+                position: absolute;
+                height:4rem;
+                width:4rem;
+                background-color: rgb(193, 193, 193);
+                display: none;
+                top:-2rem;
+                left:6rem;
+                transform: rotate(15deg);
             }
             @keyframes crying {
                 0% {
@@ -149,15 +181,32 @@
                 }
                 100% {
                     opacity: 0;
-                    transform: translate(0, 200px);
+                    transform: translate(0, 20rem);
                 }
             }
+            @keyframes movearm {
+                0% {
+                    transform:  rotate(60deg);
+                }
+                30% {
+                    transform:  rotate(-70deg);
+                }
+                70%{
+                    transform:  rotate(-70deg);
+                }
+                100% {
+                    transform:  rotate(60deg);
+                }
+            }
+            
         </style>
     </head>
     <body>
-        <button id="button"></button>
+        <button id="button">Vysmrkat se</button>
         <div class="stickman">
             <div class="head">
+                <img src="speechbubble.png" class="speechbubble">
+                <p class="bubbletext">asdasdasd</p>
                 <div class="eyes">
                     <div class="eye">
                         <div class="pupil"></div>
@@ -171,19 +220,36 @@
             </div>
 
             <div class="body">
-                <img src="napkinbox.png" alt="napkinbox" class="napkinbox" />
+                <img src="napkinbox.png" alt="fapkinbox" class="napkinbox" />
             </div>
             <div class="arm left"></div>
-            <div class="arm right"></div>
+            <div class="arm right" id="rightArm">
+                <div class="napkin"></div>
+            </div>
             <div class="leg left"></div>
             <div class="leg right"></div>
         </div>
     </body>
     <script>
         const button = document.querySelector("#button");
+        const rightArm = document.querySelector(".arm.right");
+        const napkin = document.querySelector(".napkin");
 
         button.addEventListener("click", clearnose);
 
-        function clearnose() {}
+        function clearnose() {
+            
+            rightArm.classList.add("rarmmove");
+            napkin.style.display = "block";
+
+            setTimeout(() => {
+                rightArm.classList.remove("rarmmove");
+                napkin.style.display = "none";
+            }, 5000);
+            setTimeout(() => {
+                napkin.style.backgroundColor = "#f0f7ab";
+                
+            }, 2000);
+        }
     </script>
 </html>
