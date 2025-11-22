@@ -164,6 +164,7 @@
                 position: absolute;
                 color:white;
                 font-size: 1.2rem;
+                width: 13rem;
             }
             .napkin{
                 position: absolute;
@@ -206,7 +207,7 @@
         <div class="stickman">
             <div class="head">
                 <img src="speechbubble.png" class="speechbubble">
-                <p class="bubbletext">asdasdasd</p>
+                <p class="bubbletext">im very saaad because</p>
                 <div class="eyes">
                     <div class="eye">
                         <div class="pupil"></div>
@@ -231,11 +232,15 @@
         </div>
     </body>
     <script>
+        const apikey = "dosad'tesemsvujklic";//podle chatgpt a mych pokusu importovat env bez nodu muzeme jenom jako async fetch atd. tak ze to nema cenu. 
+        const apilink = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apikey}`;
         const button = document.querySelector("#button");
         const rightArm = document.querySelector(".arm.right");
         const napkin = document.querySelector(".napkin");
+        const output = document.querySelector(".bubbletext");
 
         button.addEventListener("click", clearnose);
+        loadJson();
 
         function clearnose() {
             
@@ -251,5 +256,31 @@
                 
             }, 2000);
         }
+        let data; // guhhh chci aby tohle bylo const uvnitr loadjsonu ale nemuzu😭😭
+        
+        async function loadJson(){
+            const response = await fetch("prompt.json");
+            data = await response.json();
+            
+            requestAIslop();
+
+            setInterval(requestAIslop, 6100); //free tier gemini ma limit 10 requestu za minutu tak ze tohle je minimum(jestli tenhle projekt spusti vicero lidi najednou tak asi me bannou v googlu)
+        }
+
+        async function requestAIslop() {
+            const answ = await fetch(apilink, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            });
+            const processeddata = await answ.json();
+            console.log(processeddata);
+            output.innerText = processeddata.candidates[0].content.parts[0].text; // stinky json
+            
+        }
+        
+
     </script>
 </html>

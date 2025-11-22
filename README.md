@@ -1,3 +1,23 @@
+# smutny mlady pan ktery breci, smrka, a rika ai generated nesmysly 
+### POWERED BY AI™®©
+
+jestli chcete aby vam to frcelo tak musite do kodu dosadit svuj vlastni gemini api key(stop proc to vysvetluju)
+
+
+
+![dagif](https://i.ibb.co/PG9Cv89k/aisadness.gif)
+
+
+
+
+
+
+
+
+
+
+
+
 # Velkolepá animace
 
 ### Vytvořte nádhernou animaci.
