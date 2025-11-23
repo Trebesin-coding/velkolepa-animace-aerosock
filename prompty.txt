@@ -1,0 +1,6 @@
+par krat jsem se ptal chatgpt na neco ve stylu
+
+*insert_my_whole_code*
+proc mi nefunguje nejaka animace/nevidim nejaky element atd. tohle je velka pomoc pro slepce jako jsem ja(kdybych postnul vsechny ty moje prompty bylo by to jako 2000 radku. vetsinou to bylo neco jako neni definovana barva/rozmer/preklep)
+
+taky jsem se hodne uhhh inspiroval co se tyka jsonu a api a gitignoru a jinych veci ktere nejsou ale csskem
