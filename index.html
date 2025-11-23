@@ -150,6 +150,10 @@
                 height:4rem;
                 width: 12rem;
             }
+            #button:hover{
+                cursor: pointer;
+                animation:rgbgaming 3s infinite;
+            }
             .speechbubble{
              filter:invert(1);
              height:10rem;   
@@ -175,6 +179,20 @@
                 top:-2rem;
                 left:6rem;
                 transform: rotate(15deg);
+            }
+            @keyframes rgbgaming {
+                0% {
+                    filter: drop-shadow(0 0 20px red);
+                }
+                33% {
+                    filter: drop-shadow(0 0 20px green);
+                }
+                66% {
+                    filter: drop-shadow(0 0 20px blue);
+                }
+                100% {
+                    filter: drop-shadow(0 0 20px red);
+                }
             }
             @keyframes crying {
                 0% {
