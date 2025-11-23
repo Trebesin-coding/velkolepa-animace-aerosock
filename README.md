@@ -3,6 +3,8 @@
 
 jestli chcete aby vam to frcelo tak musite do kodu dosadit svuj vlastni gemini api key(stop proc to vysvetluju)
 
+edit: hloupej github z nejakeho duvodu ukazuje jenom prvnich par vterin embednute gifky tak ze tam neda se videt zmenu textu
+tady je original https://i.ibb.co/PG9Cv89k/aisadness.gif
 
 
 ![dagif](https://i.ibb.co/PG9Cv89k/aisadness.gif)
