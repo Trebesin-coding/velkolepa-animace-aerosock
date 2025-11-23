@@ -277,15 +277,14 @@
                 
             }, 2000);
         }
-        let data; // guhhh chci aby tohle bylo const uvnitr loadjsonu ale nemuzu😭😭
-        
+        let data; 
         async function loadJson(){
             const response = await fetch("prompt.json");
             data = await response.json();
             
             requestAIslop();
 
-            setInterval(requestAIslop, 6100); //free tier gemini ma limit 10 requestu za minutu tak ze tohle je minimum(jestli tenhle projekt spusti vicero lidi najednou tak asi me bannou v googlu)
+            setInterval(requestAIslop, 6100); //free tier gemini ma limit 10 requestu za minutu tak ze tohle je minimum
         }
 
         async function requestAIslop() {
@@ -297,7 +296,6 @@
                 body: JSON.stringify(data)
             });
             const processeddata = await answ.json();
-            console.log(processeddata);
             output.innerText = processeddata.candidates[0].content.parts[0].text; // stinky json
             
         }
